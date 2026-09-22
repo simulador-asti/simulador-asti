@@ -43,5 +43,5 @@ export const SEED_PRODUTOS: ProdutoCatalogo[] = [
   p('PC-BC-CX',    'PERFUME CAPILAR BLUE CAPRI 30ML CX C/48 - ASTI',        'CX', 48, 221.28, 1.354470, 4.61, 0.12, 0.125, 0.0228, 0.143, 'Perfume Capilar'),
   p('PC-C-CX',     'PERFUME CAPILAR CANDY 30ML CX C/48 - ASTI',             'CX', 48, 221.28, 1.443144, 4.61, 0.12, 0.125, 0.0228, 0.143, 'Perfume Capilar'),
   p('PC-L-CX',     'PERFUME CAPILAR LOVE 30ML CX C/48 - ASTI',              'CX', 48, 221.28, 1.452722, 4.61, 0.12, 0.125, 0.0228, 0.143, 'Perfume Capilar'),
-  p('AL-BOX',      'AURORA LIPS - GLOSS BOX C/24 - ASTI COSMÉTICOS',        'CX', 24, 128.40, 3.136009, 5.35, 0.12, 0.125, 0.0228, 0.143, 'Outros'),
+  p('AL-BOX',      'AURORA LIPS - GLOSS BOX C/24 - ASTI COSMÉTICOS',        'CX', 24, 128.40, 3.136009, 5.35, 0.12, 0.125, 0.0228, 0.143, 'Gloss'),
 ];

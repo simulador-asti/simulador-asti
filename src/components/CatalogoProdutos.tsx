@@ -4,10 +4,13 @@ import { useAppData } from '../AppDataContext';
 import { brl, pct } from '../fmt';
 import { randomUUID } from '../uuid';
 
+const CATEGORIAS = ['Body Splash', 'Perfume Capilar', 'Pós', 'Body Glow', 'Fixador', 'Deo Colônia', 'Gloss', 'Outros'];
+
 const EMPTY: Omit<ProdutoCatalogo, 'id'> = {
   codigo: '', descricao: '', unidade: 'CX', unidPorCx: 12,
   precoCatalogo: 0, custoMPUnit: 0, precoTransfCx: 0,
   icmsAliq: 0.12, pisCofinsAliq: 0.125, irpjCsllAliq: 0.0228, ipiAliq: 0.143,
+  categoria: 'Outros',
 };
 
 export default function CatalogoProdutos() {
@@ -99,7 +102,7 @@ export default function CatalogoProdutos() {
         <table className="w-full text-sm min-w-[900px]">
           <thead>
             <tr style={{ borderBottom: '1px solid #334155' }}>
-              {['Código', 'Descrição', 'Un', 'Un/Cx', 'P. Catálogo', 'Custo MP', 'P. Transf Cx', 'ICMS', 'PIS/COF', 'IRPJ/CSLL', 'IPI', ''].map(h => (
+              {['Código', 'Descrição', 'Categoria', 'Un', 'Un/Cx', 'P. Catálogo', 'Custo MP', 'P. Transf Cx', 'ICMS', 'PIS/COF', 'IRPJ/CSLL', 'IPI', ''].map(h => (
                 <th key={h} className="px-3 py-3 text-left text-xs font-medium uppercase tracking-wide whitespace-nowrap" style={{ color: '#94a3b8' }}>{h}</th>
               ))}
             </tr>
@@ -114,6 +117,7 @@ export default function CatalogoProdutos() {
               >
                 <td className="px-3 py-2 font-mono font-medium" style={{ color: '#d4a853' }}>{p.codigo}</td>
                 <td className="px-3 py-2 max-w-[220px] truncate" style={{ color: '#f1f5f9' }} title={p.descricao}>{p.descricao}</td>
+                <td className="px-3 py-2 whitespace-nowrap" style={{ color: '#94a3b8' }}>{p.categoria ?? 'Outros'}</td>
                 <td className="px-3 py-2" style={{ color: '#94a3b8' }}>{p.unidade}</td>
                 <td className="px-3 py-2 text-right" style={{ color: '#94a3b8' }}>{p.unidPorCx}</td>
                 <td className="px-3 py-2 text-right" style={{ color: '#f1f5f9' }}>{brl(p.precoCatalogo)}</td>
@@ -145,7 +149,7 @@ export default function CatalogoProdutos() {
             ))}
             {filtrado.length === 0 && (
               <tr>
-                <td colSpan={12} className="px-4 py-8 text-center" style={{ color: '#94a3b8' }}>
+                <td colSpan={13} className="px-4 py-8 text-center" style={{ color: '#94a3b8' }}>
                   Nenhum produto encontrado.
                 </td>
               </tr>
@@ -181,6 +185,16 @@ export default function CatalogoProdutos() {
               <div className="col-span-2">
                 <label className="block text-xs mb-1" style={{ color: '#94a3b8' }}>Descrição *</label>
                 <input type="text" value={form.descricao} onChange={e => setF('descricao', e.target.value)} />
+              </div>
+              <div className="col-span-2">
+                <label className="block text-xs mb-1" style={{ color: '#94a3b8' }}>Categoria</label>
+                <select
+                  value={form.categoria ?? 'Outros'}
+                  onChange={e => setF('categoria', e.target.value)}
+                  style={{ background: '#0f172a', color: '#f1f5f9', border: '1px solid #334155', borderRadius: '6px', padding: '6px 10px', width: '100%' }}
+                >
+                  {CATEGORIAS.map(c => <option key={c} value={c}>{c}</option>)}
+                </select>
               </div>
               <div>
                 <label className="block text-xs mb-1" style={{ color: '#94a3b8' }}>Unid por Cx</label>

@@ -39,8 +39,8 @@ export function calcularItem(
     icmsRS         = fatBruto * icmsAliq;
     pisCofinsRS    = fatBruto * pisCofinsAliq;
     irpjCsllRS     = fatBruto * irpjCsllAliq;
-    ipiRS          = 0; // preço ASTI já informado sem IPI
-    custoTransfTotal = icmsRS + pisCofinsRS + irpjCsllRS;
+    ipiRS          = fatBruto * ipiAliq;
+    custoTransfTotal = icmsRS + pisCofinsRS + irpjCsllRS + ipiRS;
     custoTotal     = cmpTotal + dvvRS + custoTransfTotal;
   } else {
     // De Belle — Simples Nacional + tributos sobre preço de transferência
