@@ -33,7 +33,7 @@ export function AppDataProvider({ children }: { children: React.ReactNode }) {
         const seedMap = new Map(SEED_PRODUTOS.map(p => [p.codigo, p]));
         const merged = raw.map(p => {
           const s = seedMap.get(p.codigo);
-          return s ? { ...p, custoMPUnit: s.custoMPUnit, precoTransfCx: s.precoTransfCx, categoria: s.categoria } : p;
+          return s ? { ...p, categoria: s.categoria } : p;
         });
         const existingCodigos = new Set(raw.map(p => p.codigo));
         const novos = SEED_PRODUTOS.filter(p => !existingCodigos.has(p.codigo));
